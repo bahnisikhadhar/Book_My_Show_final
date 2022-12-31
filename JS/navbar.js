@@ -17,7 +17,7 @@ const rightNavRest = document.querySelector(".right_nav_rest");
 const rightNavRest1 = document.querySelector(".right_nav_rest1");
 const signPopUpContainer = document.querySelector(".sign_pop_up_container");
 const signPopUpContainer1 = document.querySelector(".sign_pop_up_container1");
-const noOtpLogin=document.querySelector(".noOtp");
+const noOtpLogin = document.querySelector(".noOtp");
 
 let sentOtp;
 
@@ -140,23 +140,24 @@ hamIcon.addEventListener("click",()=>{
  
  mainBody.addEventListener("click",()=>{
      hamburger.classList.remove("display_block");
-     hamburger1.classList.add("display_none");
+     hamburger1.classList.remove("display_block");
  })
  
  hamburgerLogin.addEventListener("click",()=>{
-     hamburger.classList.add("display_none");
+     hamburger.classList.remove("display_block");
      signPopUpContainer.classList.add("display_block");
  
  })
  
  rightNavRest1.addEventListener("click",()=>{
+    console.log("hi")
   hamburger1.classList.add("display_block");
  })
  
  hamburgerSignOut.addEventListener("click",()=>{
      rightNavRest1.classList.remove("display_flex");
      rightNavRest.classList.remove("display_none");
-     hamburger1.classList.add("display_none");
+     hamburger1.classList.remove("display_block");
  
      // localStorage.setItem("isLoggedIn", false);
      localStorage.removeItem("isLoggedIn");
