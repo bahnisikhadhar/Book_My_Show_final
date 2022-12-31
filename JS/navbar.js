@@ -215,9 +215,9 @@ googleBtn.addEventListener("click", async (e) => {
     signInWithRedirect(auth, provider);
     const result =  await getRedirectResult(auth)
     console.log(result);
-    //debugger;
+   
         try{
-            debugger;
+            
             localStorage.setItem("isLoggedIn", true);
             localStorage.setItem("user", auth.currentUser.displayName);
             // This gives you a Google Access Token. You can use it to access Google APIs.
@@ -230,7 +230,7 @@ googleBtn.addEventListener("click", async (e) => {
            
           
         }catch(error) {
-            debugger;
+           
             // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;
