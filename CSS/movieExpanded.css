@@ -146,16 +146,18 @@ a{
     justify-content: start;
     gap: 1.5rem;
     align-items: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     width: 100%;
+    overflow-x: scroll;
 }
 .crew_container{
     display: flex;
     justify-content:start;
     gap: 1.5rem;
     align-items: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     width: 100%;
+    overflow-x: scroll;
 }
 
 .cast_detail,.crew_detail{
@@ -191,6 +193,7 @@ a{
     padding: 1.5rem;
     border-radius: 10px;
     color: rgb(67, 66, 66);
+    overflow-x: auto;
 }
 .frst_row_review{
     display: flex;
@@ -351,6 +354,25 @@ a{
     }
     .poster_img {
         margin-bottom: 5%;
+    }
+    .about_movie,.offers,.cast_section,.crew_section,.review_section,.buzz_container,.movie_suggestions{
+        width: 80%;
+    }
+    .review_container{
+        flex-direction: column;
+    }
+    .reviews{
+        width: 100%;
+    }
+    .review_btn{
+        display: none;
+    }
+    .limited_offer{
+        width: 100%;
+    }
+    .moviesYouMayLike img{
+        width:200px;
+        height: 320px;
     }
 }
 

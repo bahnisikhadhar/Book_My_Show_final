@@ -602,4 +602,15 @@ main{
         display: flex;
     }
     
+    .nav_hamburger,.nav_hamburger1{
+        width: 100%;
+    }
+    .sign_pop_up,.sign_pop_up1{
+        width: 100%;
+        left: 0;
+        top: 0;
+        border-radius: 0;
+        height: 90vh;
+    }
+    
 }

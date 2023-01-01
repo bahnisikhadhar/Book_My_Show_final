@@ -167,6 +167,7 @@ hamIcon.addEventListener("click",()=>{
  
  
 //--------------------------------------------FOR PHONE VIEW----------------------------------------------------
+const belowBarUser=document.querySelector(".below_bar_user");
 
 rightNavCityOptionPhone.addEventListener("click",()=>{
     cityPopUpContainer.classList.add("display_block");
@@ -187,6 +188,9 @@ cityPopUp.addEventListener("click",(event)=>{
         }
 })
 
+belowBarUser.addEventListener("click",()=>{
+  hamburger.classList.add("display_block");
+})
 
 
 
