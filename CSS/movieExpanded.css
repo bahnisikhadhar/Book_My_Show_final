@@ -150,6 +150,9 @@ a{
     width: 100%;
     overflow-x: scroll;
 }
+.cast_container::-webkit-scrollbar{
+  display: none;
+}
 .crew_container{
     display: flex;
     justify-content:start;
@@ -159,7 +162,9 @@ a{
     width: 100%;
     overflow-x: scroll;
 }
-
+.crew_container::-webkit-scrollbar{
+    display: none;
+}
 .cast_detail,.crew_detail{
     display: flex;
     align-items: center;
