@@ -19,6 +19,8 @@ const signPopUpContainer = document.querySelector(".sign_pop_up_container");
 const signPopUpContainer1 = document.querySelector(".sign_pop_up_container1");
 const noOtpLogin = document.querySelector(".noOtp");
 let profileName = document.querySelector(".username")
+// let searchInput = document.getElementById('movieSearch');
+// let suggestionsContainer = document.getElementById('suggestionsContainer');
 let sentOtp;
 
 profileName.innerHTML = localStorage.getItem("user")??`Hi,<span class="user_name">Guest</span>`
@@ -248,3 +250,114 @@ googleBtn.addEventListener("click", async (e) => {
         };
 })
 
+// const Api_key = "api_key=57b428c0e112b579eb26e2f43ff08b0f";
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     const searchInput = document.getElementById('movieSearch');
+//     const suggestionsContainer = document.getElementById('suggestionsContainer');
+  
+//     // Event listener for input changes
+//     searchInput.addEventListener('input', function () {
+//       const searchTerm = searchInput.value.trim();
+  
+//       // Clear previous suggestions
+//       suggestionsContainer.innerHTML = '';
+  
+//       if (searchTerm.length >= 2) {
+//         // Call TMDb API for movie suggestions
+//         fetch(`https://api.themoviedb.org/3/search/movie?${Api_key}&query=${searchTerm}`)
+//           .then(response => response.json())
+//           .then(data => {
+//             const movies = data.results;
+  
+//             // Display suggestions
+//             movies.forEach(movie => {
+//               const suggestion = document.createElement('div');
+//               suggestion.classList.add('suggestion');
+//               suggestion.textContent = movie.title;
+  
+//               suggestion.addEventListener('click', function () {
+//                 // Set selected movie in the input field
+//                 searchInput.value = movie.title;
+  
+//                 // Pass the movie ID to the next page
+//                 navigateToNextPage(movie.id);
+//               });
+  
+//               suggestionsContainer.appendChild(suggestion);
+//             });
+//           })
+//           .catch(error => {
+//             console.error('Error fetching movie suggestions:', error);
+//           });
+//       }
+//     });
+  
+//     function navigateToNextPage(movieId) {
+//       // Redirect to the next page with the movie ID as a query parameter
+//       window.location.href = `HTML/movieExpanded.html?id=${movieId}`;
+//     }
+//   });
+  
+
+
+  const Api_key = "api_key=57b428c0e112b579eb26e2f43ff08b0f";
+
+document.addEventListener('DOMContentLoaded', function () {
+  const searchInput = document.getElementById('movieSearch');
+  const suggestionsContainer = document.getElementById('suggestionsContainer');
+
+
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return function () {
+      const context = this;
+      const args = arguments;
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func.apply(context, args);
+      }, delay);
+    };
+  };
+
+  
+  searchInput.addEventListener('input', debounce(function () {
+    const searchTerm = searchInput.value.trim();
+
+   
+    suggestionsContainer.innerHTML = '';
+
+    if (searchTerm.length >= 2) {
+   
+      fetch(`https://api.themoviedb.org/3/search/movie?${Api_key}&query=${searchTerm}`)
+        .then(response => response.json())
+        .then(data => {
+          const movies = data.results;
+
+         
+          movies.forEach(movie => {
+            const suggestion = document.createElement('div');
+            suggestion.classList.add('suggestion');
+            suggestion.textContent = movie.title;
+
+            suggestion.addEventListener('click', function () {
+          
+              searchInput.value = movie.title;
+
+              navigateToNextPage(movie.id);
+            });
+
+            suggestionsContainer.appendChild(suggestion);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching movie suggestions:', error);
+        });
+    }
+  }, 300)); 
+
+  function navigateToNextPage(movieId) {
+
+    window.location.href = `HTML/movieExpanded.html?id=${movieId}`;
+  }
+});

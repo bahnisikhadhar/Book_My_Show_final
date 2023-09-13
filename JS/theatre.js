@@ -88,13 +88,31 @@ const renderDetails = async () => {
 //     getLiveEvents(selectedDate);
 //   });
 // });
-
+const jsonMockData = {
+  "message": "Successfully get data for ${date}",
+  "method": "GET",
+  "url": "/shows?date=$%7Bdate%7D",
+  "data": {
+    "date": "${date}",
+    "theatres": [
+      {"id":1,"theatreName":"PVR:Nucleus Mall,Ranchi","Time":["9:50 AM"]},
+      {"id":2,"theatreName":"Eylex:Cinemas:Hinoo","Time":["9:50 AM","10:50 AM","11:30 AM"]},
+      {"id":3,"theatreName":"JD Cinemas: JD HI Street Mall, Ranchi","Time":["9:00 AM","10:40 AM"]},
+      {"id":4,"theatreName":"Fun Cinemas: Springcity, Ranchi","Time":["9:00 AM","10:40 AM"]},
+      {"id":5,"theatreName":"City Mall","Time":["9:50 PM","10:40 PM"]},
+      {"id":6,"theatreName":"S.R.S Mall","Time":["9:00 AM","10:40 AM"]}
+    ]
+  }
+};
 async function getLiveEvents(date) {
   //let url = "../JSON/theatre.json";
   //let date = '23/12/2022'
-  const res = await fetch(`https://lackadaisical-salt-radium.glitch.me/shows?date=${date}`);
-  const data = await res.json();
-  // console.log(data);
+  // const res = await fetch(`https://lackadaisical-salt-radium.glitch.me/shows?date=${date}`);
+  // const data = await res.json();
+  // // console.log(data);
+  // let theatre = data.data.theatres;
+
+  const data = jsonMockData;
   let theatre = data.data.theatres;
   //let theatreTime = data.theatres.Time;
   let today = new Date();
