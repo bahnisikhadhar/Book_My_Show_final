@@ -12,20 +12,7 @@ export function getNavbarHTML() {
                         class="search_bar">
                 </div>
             </div>
-            <div class="right_nav">
-                <div class="right_nav_city">
-                    <span class="city_name">Kolkata</span>
-                    <i class="fa-solid fa-caret-down"></i>
-                </div>
-                <div class="right_nav_rest">
-                    <button class="sign_btn btn">sign in</button>
-                    <div class="ham_icon"><i class="fa-solid fa-bars"></i></div>
-                </div>
-                <div class="right_nav_rest1">
-                    <div class="user_icon"><i class="fa-solid fa-user"></i></div>
-                    <p>Hi,<span class="user_name">Guest</span></p>
-                </div>
-            </div>
+          
     </header>
     <div class="sign_pop_up_container">
     <div class="sign_pop_up">
@@ -358,3 +345,19 @@ export function getNavbarHTML() {
     
     `
 }
+
+
+// <div class="right_nav">
+// <div class="right_nav_city">
+//     <span class="city_name">Kolkata</span>
+//     <i class="fa-solid fa-caret-down"></i>
+// </div>
+// <div class="right_nav_rest">
+//     <button class="sign_btn btn">sign in</button>
+//     <div class="ham_icon"><i class="fa-solid fa-bars"></i></div>
+// </div>
+// <div class="right_nav_rest1">
+//     <div class="user_icon"><i class="fa-solid fa-user"></i></div>
+//     <p>Hi,<span class="user_name">Guest</span></p>
+// </div>
+// </div>
