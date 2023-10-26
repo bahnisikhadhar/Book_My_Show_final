@@ -282,21 +282,23 @@ theatrelocation.addEventListener("click", (e) => {
 });
 
 const seatToChoose_button_EL = document.querySelector('.seatToChoose_button');
+let numSeats;
 seatsToBookEl.addEventListener("click", (e) => {
 
-  let numSeats = e.target.innerText;
+  numSeats = e.target.innerText;
   sessionStorage.setItem('numSeats', numSeats);
   // window.location.href = `../HTML/seat.html?id=${id}&seats=${numSeats}` ;
 
 });
 seatToChoose_button_EL.addEventListener('click', function () {
-
-
-
+ 
   const url = `../HTML/seat.html?id=${id}&theatreName=${currentTheatreName}`;
-
-  // Navigate to the next page
-  window.location.href = url;
+if(numSeats){
+ // Navigate to the next page
+ window.location.href = url;
+} else{
+  alert("You must select seat to proceed further")
+}
 });
 // ==================================================FOR DISPLAY MODAL====================================================
 
