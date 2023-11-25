@@ -197,36 +197,61 @@ const vechile = document.getElementById("vechile");
 
 let chooseseats = document.querySelector(".chooseseats");
 
-chooseseats.addEventListener("mouseover", (e) => {
-  // console.log(e.target)
-  if (e.target.innerText == "1") {
-    vechile.src = "../Images/bycycle.png";
-  } else if (e.target.innerText == "2") {
-    vechile.src = "../Images/scooter.png";
-  } else if (e.target.innerText == "3") {
-    vechile.src = "../Images/auto.png";
-  } else if (e.target.innerText == "4") {
-    vechile.src = "../Images/minicar.png";
-  } else if (e.target.innerText == "5") {
-    vechile.src = "../Images/car.png";
-  } else {
-    vechile.src = "../Images/bus.png";
-  }
-});
+// chooseseats.addEventListener("mouseover", (e) => {
+//   // console.log(e.target)
+//   if (e.target.innerText == "1") {
+//     vechile.src = "../Images/bycycle.png";
+//   } else if (e.target.innerText == "2") {
+//     vechile.src = "../Images/scooter.png";
+//   } else if (e.target.innerText == "3") {
+//     vechile.src = "../Images/auto.png";
+//   } else if (e.target.innerText == "4") {
+//     vechile.src = "../Images/minicar.png";
+//   } else if (e.target.innerText == "5") {
+//     vechile.src = "../Images/car.png";
+//   } else {
+//     vechile.src = "../Images/bus.png";
+//   }
+// });
 
-let seatCount = [];
-chooseseats.addEventListener("click", (e) => {
-  if (e.target.classList.contains("seats")) {
-    if (seatCount.length > 0) {
-      let temp = seatCount.shift();
-      temp.classList.remove("backgroundcolorRed");
-    }
-    seatCount.push(e.target);
-  }
-  seatCount.forEach((el) => {
-    el.classList.add("backgroundcolorRed");
-  });
-});
+// let seatCount = [];
+// chooseseats.addEventListener("click", (e) => {
+//   if (e.target.classList.contains("seats")) {
+//     if (seatCount.length > 0) {
+//       let temp = seatCount.shift();
+//       temp.classList.remove("backgroundcolorRed");
+//     }
+//     seatCount.push(e.target);
+//   }
+//   seatCount.forEach((el) => {
+//     el.classList.add("backgroundcolorRed");
+//   });
+// });
+
+// --------------------------------UPDATED ON 19TH NOV, 2023 -------------------------------------------------
+var lastClicked;
+
+    seats.forEach(function(seat) {
+        seat.addEventListener('mouseover', function() {
+          vechile.src = this.dataset.img;
+        });
+        
+        seat.addEventListener('click', function() {
+          if (lastClicked) {
+            lastClicked.classList.remove('backgroundcolorRed');
+        }
+          this.classList.add('backgroundcolorRed');
+          lastClicked = this;
+        });
+    });
+
+    document.querySelector('.seatstobook').addEventListener('mouseout', function() {
+        if (lastClicked && lastClicked.dataset.img) {
+          vechile.src = lastClicked.dataset.img;
+      }
+    });
+
+// --------------------------------------------------------------------------------------------------
 
 const cut = document.getElementById("cut");
 const termsandconditions = document.querySelector(".termsandconditions_body");

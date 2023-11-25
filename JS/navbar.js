@@ -127,7 +127,7 @@ cityPopUp.addEventListener("click",(event)=>{
         }
 })
 
-// -----------------------------------------HUMBERGER---------------------------------------------------------
+// -----------------------------------------HAMBURGER---------------------------------------------------------
 const hamburgerLogin = document.querySelector(".hamburger_login");
 const hamburger = document.querySelector(".nav_hamburger");
 const hamIcon = document.querySelector(".ham_icon");
