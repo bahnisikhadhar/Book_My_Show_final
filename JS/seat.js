@@ -12,7 +12,7 @@ const dynamic_nav_el = document.querySelector(".seat_nav")
 const close_pointer_el = document.querySelector(".seat_close_icon")
 const amoutShowButton = document.querySelector(".seat_total_amount");
 const amountShowAnchorEl = document.querySelector(".amount_show_anchor")
-const payment_btn = document.querySelector(".seat_type1")
+const amountBtnContainer = document.querySelector(".seat_type1")
 const backLogoEl = document.querySelector(".seat_cheveron")
 let currentrow1, currentrow2, currentrow3;
 
@@ -93,194 +93,79 @@ for (let i = 0; i < seatrow3; i++) {
   }
 }
 
-
+// --------------------------------------------------------------------------------------------------------------
 //With Local storage
 
-//-----FeedBack by Prakash Sir-------------------------need to convert it in function-----------------------------------------
+let lastSelectedType = null;
 
-//--------------------------------------FOR PREMIUM-------------------------------------------------------
+function handleSeatSelection(seats, ticketPrice, selectedSeatsKey) {
+  let selectedSeats = [];
+  let ticketCount = 0;
+  let ticketTotal = 0;
+  let count = seats.length; // assuming 'seats' is a NodeList
+  let temp = 0;
 
-const seats1 = document.querySelectorAll('.seat1');
-const ticketPrice1 = document.getElementById('ticket_price1').textContent;
-
-let selectedSeats1 = [];
-let ticketCount1 = 0;
-let ticketTotal1 = 0;
-let count = seats;
-let temp = 0;
-
-if (localStorage.getItem('selectedSeats1')) {
-  selectedSeats1 = JSON.parse(localStorage.getItem('selectedSeats1'));
-  ticketTotal1 = ticketCount1 * ticketPrice1;
-}
-
-seats1.forEach(seat => {
-  if (selectedSeats1.includes(seat.id)) {
-    seat.classList.add('selected');
-    seat.style.backgroundColor = '#eee';
-    seat.style.border = "none";
+  if (localStorage.getItem(selectedSeatsKey)) {
+    selectedSeats = JSON.parse(localStorage.getItem(selectedSeatsKey));
+    ticketTotal = ticketCount * ticketPrice;
   }
 
-  seat.addEventListener('click', e => {
-
-    temp++;
-    if (temp > count) {
-      // seat.removeEventListener("click")
-      // console.log(temp) ;
-      return;
+  seats.forEach(seat => {
+    if (selectedSeats.includes(seat.id)) {
+      seat.classList.add('selected');
+      seat.style.backgroundColor = '#eee';
+      seat.style.border = "none";
     }
 
-    else {
-
-      // console.log(temp) ;
-      if (seat.classList.contains('selected')) {
-        seat.classList.remove('selected');
-        ticketCount1--;
-        a++;
-        selectedSeats1 = selectedSeats1.filter(s => s !== seat.id);
-      } else {
-        seat.classList.add('selected');
-        ticketCount1++;
-        selectedSeats1.push(seat.id);
+    seat.addEventListener('click', e => {
+      if (lastSelectedType && lastSelectedType !== selectedSeatsKey) {
+        // Deselect all seats of the last selected type
+        document.querySelectorAll('.selected').forEach(selectedSeat => {
+          selectedSeat.classList.remove('selected');
+        });
+        // Reset the counts
+        ticketCount = 0;
+        temp = 0;
+        selectedSeats = [];
       }
-
-      ticketTotal1 = ticketCount1 * ticketPrice1;
-
-      console.log(`${ticketCount1} tickets, total cost: ${ticketTotal1}`);
-
-      // localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats1));
-      amoutShowButton.innerText = ticketTotal1;
-
-    }
-
-  });
-
-
-
-});
-
-//--------------------------------------FOR GOLD-------------------------------------------------------
-
-const seats2 = document.querySelectorAll('.seat2');
-const ticketPrice2 = document.getElementById('ticket_price2').textContent;
-
-let selectedSeats2 = [];
-let ticketCount2 = 0;
-let ticketTotal2 = 0;
-temp = 0;
-
-if (localStorage.getItem('selectedSeats2')) {
-  selectedSeats2 = JSON.parse(localStorage.getItem('selectedSeats2'));
-  ticketTotal2 = ticketCount2 * ticketPrice2;
-}
-
-seats2.forEach(seat => {
-  if (selectedSeats2.includes(seat.id)) {
-    seat.classList.add('selected');
-    seat.style.backgroundColor = '#eee';
-    seat.style.border = "none";
-  }
-
-  seat.addEventListener('click', e => {
-
-    temp++;
-    if (temp > count) {
-      return;
-    }
-    else {
+      lastSelectedType = selectedSeatsKey;
 
       if (seat.classList.contains('selected')) {
         seat.classList.remove('selected');
-        ticketCount2--;
-        selectedSeats2 = selectedSeats2.filter(s => s !== seat.id);
+        ticketCount--;
+        temp--; // decrement temp when a seat is deselected
+        selectedSeats = selectedSeats.filter(s => s !== seat.id);
       } else {
+        if (temp >= count) {
+          // prevent selecting more seats if the limit is reached
+          return;
+        }
         seat.classList.add('selected');
-        ticketCount2++;
-        selectedSeats2.push(seat.id);
+        ticketCount++;
+        temp++; // increment temp when a seat is selected
+        selectedSeats.push(seat.id);
       }
 
-      ticketTotal2 = ticketCount2 * ticketPrice2;
+      ticketTotal = ticketCount * ticketPrice;
 
-      console.log(`${ticketCount2} tickets, total cost: ${ticketTotal2}`);
+      console.log(`${ticketCount} tickets, total cost: ${ticketTotal}`);
 
-      // localStorage.setItem('selectedSeats2', JSON.stringify(selectedSeats2));
-      amoutShowButton.innerText = ticketTotal2;
-    }
+      // Add the display_flex class whenever a seat is clicked
+      amountBtnContainer.classList.add("display_flex");
+
+      // Update the total price in the UI
+      amoutShowButton.textContent = ticketTotal.toString();
+    });
   });
-});
-//--------------------------------------FOR GOLD-------------------------------------------------------
-
-const seats3 = document.querySelectorAll('.seat3');
-const ticketPrice3 = document.getElementById('ticket_price3').textContent;
-
-let selectedSeats3 = [];
-let ticketCount3 = 0;
-let ticketTotal3 = 0;
-temp = 0;
-
-if (localStorage.getItem('selectedSeats3')) {
-  selectedSeats3 = JSON.parse(localStorage.getItem('selectedSeats3'));
-  ticketTotal3 = ticketCount3 * ticketPrice3;
 }
 
-seats3.forEach(seat => {
-  if (selectedSeats3.includes(seat.id)) {
-    seat.classList.add('selected');
-    seat.style.backgroundColor = '#eee';
-    seat.style.border = "none";
-  }
-
-  seat.addEventListener('click', e => {
-
-    temp++;
-    if (temp > count) {
-      return;
-    }
-    else {
-
-      if (seat.classList.contains('selected')) {
-        seat.classList.remove('selected');
-        ticketCount3--;
-        selectedSeats3 = selectedSeats3.filter(s => s !== seat.id);
-      } else {
-        seat.classList.add('selected');
-        ticketCount3++;
-        selectedSeats3.push(seat.id);
-      }
-
-      ticketTotal3 = ticketCount3 * ticketPrice3;
-
-      console.log(`${ticketCount3} tickets, total cost: ${ticketTotal3}`);
-      amoutShowButton.innerText = ticketTotal3;
-
-    }
-
-  });
-});
+// Use the function for each type of seat
+handleSeatSelection(document.querySelectorAll('.seat1'), document.getElementById('ticket_price1').textContent, 'selectedSeats1');
+handleSeatSelection(document.querySelectorAll('.seat2'), document.getElementById('ticket_price2').textContent, 'selectedSeats2');
+handleSeatSelection(document.querySelectorAll('.seat3'), document.getElementById('ticket_price3').textContent, 'selectedSeats3');
 
 //-----------------------------------------------------------------------------------------------------
 
-//-----FeedBack by Prakash Sir-------------------(solved)Change name of the variable and use single classlist to cover all-----------------------------------------
-const amountBtnContainer = document.querySelector(".seat_type1");
-
-seats1.forEach(seat => {
-  seat.addEventListener("click", () => {
-    amountBtnContainer.classList.add("display_flex");
-  })
-});
-seats2.forEach(seat => {
-  seat.addEventListener("click", () => {
-    amountBtnContainer.classList.add("display_flex");
-  })
-});
-seats3.forEach(seat => {
-  seat.addEventListener("click", () => {
-    amountBtnContainer.classList.add("display_flex");
-  })
-});
-
-
-////-----FeedBack by Prakash Sir-------------------------camel case(solved)-----------------------------------------
 amountShowAnchorEl.addEventListener("click", function(event) {
   event.preventDefault();
   const price = document.querySelector('.seat_total_amount').innerText;
