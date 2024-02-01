@@ -380,7 +380,8 @@ border-bottom: 1px solid var(--bg-color1);
     color: #f84464;
 }
 .nav_left_second_head{
-    width: 30%;
+    /* width: 30%; */
+    width: 50%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -558,7 +559,8 @@ main{
         width: 30%;
     }
     .nav_left_second_head{
-        width: 50%;
+        /* width: 50%; */
+        width: 80%;
     }
     .nav_right_second_head{
         width: 40%;

@@ -317,19 +317,14 @@ export function getNavbarHTML() {
 <header class="nav_second_head">
 <div class="nav_second_header_content container">
     <ul class="nav_left_second_head">
-        <li><a href="#" class="nav_left_secHd_anchr">Movies</a></li>
-        <li><a href="#" class="nav_left_secHd_anchr">Stream</a></li>
-        <li><a href="#" class="nav_left_secHd_anchr">Events</a></li>
-        <li><a href="#" class="nav_left_secHd_anchr">Plays</a></li>
-        <li><a href="#" class="nav_left_secHd_anchr">Sports</a></li>
-        <li><a href="#" class="nav_left_secHd_anchr">Activities</a></li>
-        <li><a href="#" class="nav_left_secHd_anchr">Buzz</a></li>
-    </ul>
-    <ul class="nav_right_second_head">
-        <li><a href="#" class="nav_right_secHd_anchr">ListYourShow <sup class="nav_newSup">NEW</sup></a></li>
-        <li><a href="#" class="nav_right_secHd_anchr">Corporates</a></li>
-        <li><a href="#" class="nav_right_secHd_anchr">Offers</a></li>
-        <li><a href="./HTML/gift.html" class="nav_right_secHd_anchr">Gift Cards</a></li>
+    <li><a href="/#premiere" class="nav_left_secHd_anchr">Premiere</a></li>
+    <li><a href="/#popular" class="nav_left_secHd_anchr">Popular</a></li>
+    <li><a href="/#toprated" class="nav_left_secHd_anchr">Top Rated</a></li>
+    <li><a href="/#recommended" class="nav_left_secHd_anchr">Recommended</a></li>
+    <li><a href="/#mostliked" class="nav_left_secHd_anchr">Most Liked</a></li>
+    <li><a href="/#trending" class="nav_left_secHd_anchr">Trending</a></li>
+    <li><a href="/#latest" class="nav_left_secHd_anchr">Latest</a></li>
+    <li><a href="./../../HTML/gift.html" class="nav_right_secHd_anchr">Gift Cards</a></li>
     </ul>
 </div>
 </header>
