@@ -250,6 +250,8 @@ googleBtn.addEventListener("click", async (e) => {
         };
 })
 
+// --------------------------------------SEARCH FUNCTIONALITY--------------------------------------------------
+
 // const Api_key = "api_key=57b428c0e112b579eb26e2f43ff08b0f";
 
 // document.addEventListener('DOMContentLoaded', function () {
@@ -306,8 +308,7 @@ googleBtn.addEventListener("click", async (e) => {
 document.addEventListener('DOMContentLoaded', function () {
   const searchInput = document.getElementById('movieSearch');
   const suggestionsContainer = document.getElementById('suggestionsContainer');
-
-
+  
   const debounce = (func, delay) => {
     let timeoutId;
     return function () {
@@ -320,41 +321,109 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   };
 
-  
-  searchInput.addEventListener('input', debounce(function () {
-    const searchTerm = searchInput.value.trim();
+//   searchInput.addEventListener('input', debounce(function () {
+//     let searchTerm = searchInput.value.trim();
+//     suggestionsContainer.innerHTML = '';
 
-   
-    suggestionsContainer.innerHTML = '';
+//     suggestionsContainer.style.display = "block";
+//     const closeIconDiv = document.createElement("div");
+//     closeIconDiv.classList.add("close_icon_div");
+//     const closeIcon = document.createElement('i');
+//     closeIcon.classList.add('fa-solid','fa-xmark','closeRed');
+//     closeIcon.addEventListener("click",()=>{
+//       searchTerm = "";
+//       searchInput.value = "";
+//       suggestionsContainer.style.display = "none";
+//     })
+//     closeIconDiv.appendChild(closeIcon);
+//     suggestionsContainer.appendChild(closeIconDiv);
+//     if (searchTerm.length >= 1) {
+//         fetch(`https://api.themoviedb.org/3/search/movie?${Api_key}&query=${searchTerm}`)
+//             .then(response => response.json())
+//             .then(data => {
+//                 const movies = data.results;
 
-    if (searchTerm.length >= 2) {
-   
+//                 movies.forEach(movie => {
+//                     const suggestion = document.createElement('div');
+//                     suggestion.classList.add('suggestion');
+
+//                     // Create the film icon element
+//                     const filmIcon = document.createElement('i');
+//                     filmIcon.classList.add('fa-solid', 'fa-film', 'film_icon');
+
+//                     // Append the film icon before the movie title
+//                     suggestion.appendChild(filmIcon);
+//                     suggestion.appendChild(document.createTextNode(` ${movie.title}`));
+//   //  The document.createTextNode() method in JavaScript creates a new Text node. It’s commonly used to insert text content into an HTML document dynamically. 
+//                     suggestion.addEventListener('click', function () {
+//                         searchInput.value = movie.title;
+//                         navigateToNextPage(movie.id);
+//                     });
+                    
+//                     suggestionsContainer.appendChild(suggestion);
+//                 });
+//             })
+//             .catch(error => {
+//                 console.error('Error fetching movie suggestions:', error);
+//             });
+//     }
+// }, 300));
+
+searchInput.addEventListener('input', debounce(function () {
+  let searchTerm = searchInput.value.trim();
+  suggestionsContainer.innerHTML = '';
+
+  suggestionsContainer.style.display = "block";
+  const closeIconDiv = document.createElement("div");
+  closeIconDiv.classList.add("close_icon_div");
+  const closeIcon = document.createElement('i');
+  closeIcon.classList.add('fa-solid', 'fa-xmark', 'closeRed');
+  closeIcon.addEventListener("click", () => {
+      searchTerm = "";
+      searchInput.value = "";
+      suggestionsContainer.style.display = "none";
+  });
+  closeIconDiv.appendChild(closeIcon);
+  suggestionsContainer.appendChild(closeIconDiv);
+
+  if (searchTerm.length >= 1) {
       fetch(`https://api.themoviedb.org/3/search/movie?${Api_key}&query=${searchTerm}`)
-        .then(response => response.json())
-        .then(data => {
-          const movies = data.results;
+          .then(response => response.json())
+          .then(data => {
+              const movies = data.results;
 
-         
-          movies.forEach(movie => {
-            const suggestion = document.createElement('div');
-            suggestion.classList.add('suggestion');
-            suggestion.textContent = movie.title;
+              if (movies.length === 0) {
+                  const noResults = document.createElement('div');
+                  noResults.classList.add('no-results');
+                  noResults.textContent = "No such movie found.";
+                  suggestionsContainer.appendChild(noResults);
+              } else {
+                  movies.forEach(movie => {
+                      const suggestion = document.createElement('div');
+                      suggestion.classList.add('suggestion');
 
-            suggestion.addEventListener('click', function () {
-          
-              searchInput.value = movie.title;
+                      // Create the film icon element
+                      const filmIcon = document.createElement('i');
+                      filmIcon.classList.add('fa-solid', 'fa-film', 'film_icon');
 
-              navigateToNextPage(movie.id);
-            });
+                      // Append the film icon before the movie title
+                      suggestion.appendChild(filmIcon);
+                      suggestion.appendChild(document.createTextNode(` ${movie.title}`));
 
-            suggestionsContainer.appendChild(suggestion);
+                      suggestion.addEventListener('click', function () {
+                          searchInput.value = movie.title;
+                          navigateToNextPage(movie.id);
+                      });
+
+                      suggestionsContainer.appendChild(suggestion);
+                  });
+              }
+          })
+          .catch(error => {
+              console.error('Error fetching movie suggestions:', error);
           });
-        })
-        .catch(error => {
-          console.error('Error fetching movie suggestions:', error);
-        });
-    }
-  }, 300)); 
+  }
+}, 300));
 
   function navigateToNextPage(movieId) {
 

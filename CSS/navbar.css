@@ -89,6 +89,49 @@ border-radius: 50%;
     color: var(--bg-color1);
     font-size: 1rem;
 }
+#suggestionsContainer{
+    position: absolute;
+    top: 3.5rem;
+    left: 2.3rem;
+    width: 95%;
+    background-color: white;
+    color: black;
+    box-shadow: 0px 0px 5px black;
+    z-index: 200;
+    overflow-y: scroll;
+    display: none;
+}
+.close_icon_div{
+    width: 100%;
+    padding: 1rem;
+    padding-bottom: 0rem;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.no-results{
+    background-color: rgba(237, 237, 237, 0.5);
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.3rem;
+    color:rgb(102, 102, 102) ;
+}
+.film_icon{
+   padding-right: .5rem;
+   font-size: 1.3rem;
+}
+.suggestion{
+    background-color: white;
+    padding: .8rem;
+    margin: 0rem 2rem;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    color: rgb(102, 102, 102);
+}
+.suggestion:hover{
+    background-color: rgba(237, 237, 237, 0.5);
+}
 .right_nav_rest .btn,.right_nav1 .btn{
     padding: .3rem .7rem;
     background-color: #f84464;
