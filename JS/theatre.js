@@ -278,6 +278,7 @@ const accept = document.querySelector(".accept");
 const chooseseatModal = document.querySelector(".chooseseats_body");
 const time = document.querySelector(".movie_timing");
 const theatrelocation = document.querySelector(".theatre_location");
+const selectionAlert = document.querySelector(".selection_alert");
 
 cut.addEventListener("click", () => {
   termsandconditions.style.display = "none";
@@ -313,9 +314,14 @@ seatToChoose_button_EL.addEventListener('click', function () {
   const url = `../HTML/seat.html?id=${id}&theatreName=${currentTheatreName}`;
 if(numSeats){
  // Navigate to the next page
+ selectionAlert.style.display = "none";
  window.location.href = url;
 } else{
-  alert("You must select seat to proceed further")
+  selectionAlert.style.display = "block";
+ let timeout = setTimeout(()=>{
+    selectionAlert.style.display = "none";
+  },1700)
+  return ()=>clearTimeout(timeout);
 }
 });
 // ==================================================FOR DISPLAY MODAL====================================================

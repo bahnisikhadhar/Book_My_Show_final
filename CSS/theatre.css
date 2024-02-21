@@ -715,7 +715,13 @@
   background-color: #f14848;
   color: #ffff;
 }
-
+.selection_alert{
+  text-align: center;
+  color: red;
+  margin-top: 15px;
+  font-size: 1.1rem;
+  display: none;
+}
 /* ====================================================NUMBER OF SEATS========================================================= */
 
 @media only screen and (max-width: 500px) {
