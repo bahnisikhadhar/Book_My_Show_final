@@ -7,12 +7,28 @@ export function getNavbarHTML() {
                     <img src="../Images/bookmyshow-logo-31BC3C7354-seeklogo.com (2).jpg" alt="" class="left_nav_logo">
                 </a>
                 <div class="left_nav_search">
-                    <div class="search_icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-                    <input type="search" placeholder="Search for Movies, Events, Plays, Sports and Activities"
-                        class="search_bar">
-                </div>
+          <div class="search_icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <input type="search" placeholder="Search for Movies" class="search_bar" id="movieSearch" autocomplete="off">
+          </div>
+        <div id="suggestionsContainer">
+         
+        </div>
+      </div>
+            <div class="right_nav">
+            <div class="right_nav_city">
+              <span class="city_name">Kolkata</span>
+              <i class="fa-solid fa-caret-down"></i>
             </div>
-          
+            <div class="right_nav_rest">
+              <button class="sign_btn btn">sign in</button>
+              <div class="ham_icon"><i class="fa-solid fa-bars"></i></div>
+            </div>
+            <div class="right_nav_rest1">
+              <div class="user_icon"><i class="fa-solid fa-user"></i></div>
+              <p class="username">Hi,<span class="user_name">Guest</span></p>
+            </div>
+    
+          </div>
     </header>
     <div class="sign_pop_up_container">
     <div class="sign_pop_up">

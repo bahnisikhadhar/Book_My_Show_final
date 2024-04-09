@@ -1,3 +1,4 @@
+
 const signButton = document.querySelector(".sign_btn");
 const signPopUp = document.querySelector(".sign_pop_up");
 const modalClose = document.querySelector(".modalclose");
@@ -22,7 +23,6 @@ let profileName = document.querySelector(".username")
 // let searchInput = document.getElementById('movieSearch');
 // let suggestionsContainer = document.getElementById('suggestionsContainer');
 let sentOtp;
-
 profileName.innerHTML = localStorage.getItem("user")??`Hi,<span class="user_name">Guest</span>`
 
 const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -252,60 +252,8 @@ googleBtn.addEventListener("click", async (e) => {
 
 // --------------------------------------SEARCH FUNCTIONALITY--------------------------------------------------
 
-// const Api_key = "api_key=57b428c0e112b579eb26e2f43ff08b0f";
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     const searchInput = document.getElementById('movieSearch');
-//     const suggestionsContainer = document.getElementById('suggestionsContainer');
-  
-//     // Event listener for input changes
-//     searchInput.addEventListener('input', function () {
-//       const searchTerm = searchInput.value.trim();
-  
-//       // Clear previous suggestions
-//       suggestionsContainer.innerHTML = '';
-  
-//       if (searchTerm.length >= 2) {
-//         // Call TMDb API for movie suggestions
-//         fetch(`https://api.themoviedb.org/3/search/movie?${Api_key}&query=${searchTerm}`)
-//           .then(response => response.json())
-//           .then(data => {
-//             const movies = data.results;
-  
-//             // Display suggestions
-//             movies.forEach(movie => {
-//               const suggestion = document.createElement('div');
-//               suggestion.classList.add('suggestion');
-//               suggestion.textContent = movie.title;
-  
-//               suggestion.addEventListener('click', function () {
-//                 // Set selected movie in the input field
-//                 searchInput.value = movie.title;
-  
-//                 // Pass the movie ID to the next page
-//                 navigateToNextPage(movie.id);
-//               });
-  
-//               suggestionsContainer.appendChild(suggestion);
-//             });
-//           })
-//           .catch(error => {
-//             console.error('Error fetching movie suggestions:', error);
-//           });
-//       }
-//     });
-  
-//     function navigateToNextPage(movieId) {
-//       // Redirect to the next page with the movie ID as a query parameter
-//       window.location.href = `HTML/movieExpanded.html?id=${movieId}`;
-//     }
-//   });
-  
-
-
   const Api_key = "api_key=57b428c0e112b579eb26e2f43ff08b0f";
 
-document.addEventListener('DOMContentLoaded', function () {
   const searchInput = document.getElementById('movieSearch');
   const suggestionsContainer = document.getElementById('suggestionsContainer');
   
@@ -320,54 +268,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }, delay);
     };
   };
-
-//   searchInput.addEventListener('input', debounce(function () {
-//     let searchTerm = searchInput.value.trim();
-//     suggestionsContainer.innerHTML = '';
-
-//     suggestionsContainer.style.display = "block";
-//     const closeIconDiv = document.createElement("div");
-//     closeIconDiv.classList.add("close_icon_div");
-//     const closeIcon = document.createElement('i');
-//     closeIcon.classList.add('fa-solid','fa-xmark','closeRed');
-//     closeIcon.addEventListener("click",()=>{
-//       searchTerm = "";
-//       searchInput.value = "";
-//       suggestionsContainer.style.display = "none";
-//     })
-//     closeIconDiv.appendChild(closeIcon);
-//     suggestionsContainer.appendChild(closeIconDiv);
-//     if (searchTerm.length >= 1) {
-//         fetch(`https://api.themoviedb.org/3/search/movie?${Api_key}&query=${searchTerm}`)
-//             .then(response => response.json())
-//             .then(data => {
-//                 const movies = data.results;
-
-//                 movies.forEach(movie => {
-//                     const suggestion = document.createElement('div');
-//                     suggestion.classList.add('suggestion');
-
-//                     // Create the film icon element
-//                     const filmIcon = document.createElement('i');
-//                     filmIcon.classList.add('fa-solid', 'fa-film', 'film_icon');
-
-//                     // Append the film icon before the movie title
-//                     suggestion.appendChild(filmIcon);
-//                     suggestion.appendChild(document.createTextNode(` ${movie.title}`));
-//   //  The document.createTextNode() method in JavaScript creates a new Text node. It’s commonly used to insert text content into an HTML document dynamically. 
-//                     suggestion.addEventListener('click', function () {
-//                         searchInput.value = movie.title;
-//                         navigateToNextPage(movie.id);
-//                     });
-                    
-//                     suggestionsContainer.appendChild(suggestion);
-//                 });
-//             })
-//             .catch(error => {
-//                 console.error('Error fetching movie suggestions:', error);
-//             });
-//     }
-// }, 300));
 
 searchInput.addEventListener('input', debounce(function () {
   let searchTerm = searchInput.value.trim();
@@ -426,7 +326,16 @@ searchInput.addEventListener('input', debounce(function () {
 }, 300));
 
   function navigateToNextPage(movieId) {
+    const currentPagePath = window.location.pathname;
+    let redirectionPath = "";
+    if (currentPagePath.includes("HTML")) {
+        // If the current page is in the HTML directory
+        redirectionPath = `movieExpanded.html?id=${movieId}`; // for redirection from movieexpanded,gift page etc
+    } else {
+        // If the current page is not in the HTML directory
+        redirectionPath = `HTML/movieExpanded.html?id=${movieId}`; // for redirection from front page
+    }
 
-    window.location.href = `HTML/movieExpanded.html?id=${movieId}`;
-  }
-});
+    // Redirect to the constructed path
+    window.location.href = redirectionPath;
+}

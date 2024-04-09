@@ -1,11 +1,25 @@
 //Retrieving the id from url and storing in a variable called id
 const id = new URLSearchParams(window.location.search).get("id");
-//-----------------------------------------------------------------------------
+//------------------------------USING NAVBAR MODULE AND LOGIC FROM NAVBAR.JS AND OTP.JS--------------------------------
+
 import { getNavbarHTML } from './modules/navbarModule.js';
 import { getFooter2HTML } from './modules/footerModule.js';
 document.querySelector('.m_container').innerHTML = getNavbarHTML();
 document.querySelector('.m_footer2').innerHTML = getFooter2HTML();
+document.addEventListener('DOMContentLoaded', function() {
+  // Dynamically create a script tag for navbar.js
+  const script = document.createElement('script');
+  script.src = '../JS/navbar.js';
+  script.type = 'module';
+  
+  const otpScript = document.createElement('script');
+    otpScript.src = '../JS/otp.js';
+  // Append the script tag to the document body
+  document.body.appendChild(script);
+  document.body.appendChild(otpScript);
+});
 
+// --------------------------------------------------------------------------------------------
 //Taking Reference of div  Where We are going to put all data
 const movieContainerEl = document.querySelector(".expandedMovieContainer");
 const moviesYouMayLikeContainerEl = document.querySelector(".moviesYouMayLike_container");
