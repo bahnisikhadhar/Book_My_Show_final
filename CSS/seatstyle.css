@@ -85,7 +85,7 @@
     padding-bottom: .5rem;
     padding-top: 1rem;
     font-size: .8rem;
-    border-bottom: 1px solid rgb(224, 224, 224);
+    /* border-bottom: 1px solid rgb(224, 224, 224); */
 }
 
 /************************************************END OF NAVBAR********************************************/
@@ -94,14 +94,16 @@
 
 
 /***************************************START OF SEATS ARRANGEMENT*****************************************/
-.seats_chairs {
+/* .seats_chairs {
     margin-top: 1rem;
-}
+} */
 
 .seat_content {
-    width: 70%;
-    margin-left: 20%;
+    width: 90%;
+    margin-left: 10%;
     overflow-x: scroll;
+    margin-bottom: 2rem;
+    margin-top: 5rem;
 }
 
 .seat_content::-webkit-scrollbar {
@@ -238,8 +240,9 @@
     z-index: 100;
     display: none;
 }
+
 .amount_show_anchor {
-  width: 27%;
+    width: 27%;
 }
 
 .seat_payment_shw_btn {
@@ -258,23 +261,55 @@
     font-size: 1rem;
 }
 
+
 .display_flex {
     display: flex;
 }
 
 /**************************************************MEDIA QUERY*********************************************/
 
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 500px) {
     .seat_content {
         width: 90%;
         margin-left: 5%;
     }
-    
-   
+
+
     .seat_right_nav_item {
         width: 20%;
     }
+
     .seat_left_nav_item {
         width: 50%;
     }
+}
+
+
+.seat {
+    width: 30px;
+    height: 30px;
+    border: 1px solid green;
+    background-color: white;
+    margin: 5px;
+    padding: 3px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: green;
+    /* font-weight: bold; */
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.seat.selected {
+    background-color: green;
+    color: white;
+}
+
+.seat.disabled {
+    background-color: #ddd;
+    color: grey;
+    border: 1px solid #ddd;
+    pointer-events: none;
+
 }
