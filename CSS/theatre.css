@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
+  /* border: 2px solid red; */
 }
 
 .container {
@@ -725,13 +726,17 @@
 /* ====================================================NUMBER OF SEATS========================================================= */
 
 @media only screen and (max-width: 500px) {
-  .dates {
+  /* .dates {
     width: 100%;
     
-  }
+  } */
   
   .container{
-    padding: 0rem 1rem;
+    padding: 0rem;
+    margin-top: 1rem;
+  }
+  .booking_genere {
+    padding: 0rem 2rem;
   }
   .booking_head {
     width: 100%;
@@ -739,7 +744,7 @@
    }
   
   .movie_title span{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   .booking_content {
     width: 100%;
@@ -763,7 +768,7 @@
     font-size: 30px;
   }
   .genere {
-    font-size: 1rem;
+    font-size: .8rem;
   }
   .mainfooter_information {
     display: none;
@@ -795,4 +800,8 @@
   left: 8%;
   top: 20%;
 }
+.booking_day {
+  padding: 0.5em;
+}
+
 }

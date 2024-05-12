@@ -332,7 +332,7 @@ export function getNavbarHTML() {
 </div>
 </header>
 <header class="nav_first_head1">
-<div class="nav_first_header1 container">
+<div class="nav_first_header1">
     <div class="left_nav1">
         <h2>It All Starts Here!</h2>
         <div class="right_nav_city1">
@@ -342,7 +342,6 @@ export function getNavbarHTML() {
     </div>
     <div class="right_nav1">
         <button class="btn app_btn">Use App</button>
-        <!-- <div class="search_icon"><i class="fa-solid fa-magnifying-glass phone_magnify"></i></div> -->
     </div>
 </div>
 </header>

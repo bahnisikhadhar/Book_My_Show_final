@@ -276,10 +276,16 @@
 
 
     .seat_right_nav_item {
-        width: 20%;
+        width: 30%;
     }
 
     .seat_left_nav_item {
+        width: 50%;
+    }
+    .seat_screen{
+        width: 50%;
+    }
+    .amount_show_anchor {
         width: 50%;
     }
 }
