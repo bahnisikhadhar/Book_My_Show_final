@@ -6,6 +6,9 @@ const paymentModal = document.querySelector(".payment_modal");
 const cardName = document.getElementById("card_name");
 const cardcvv = document.getElementById("card_cvv");
 const cardnumber = document.getElementById("card_number");
+const months = document.getElementById("months");
+const years = document.getElementById("years");
+const expiry = document.querySelector(".expiry");
 
 let cardnumlen = 16
 let cvvlen = 3
@@ -29,13 +32,25 @@ cardcvv.addEventListener('input', () => {
     disabled.classList.remove("display_none");
   }
 });
-
+let monthvalue = "";
+let yearvalue = "";
+months.addEventListener("input", () => {
+  monthvalue = months.value;
+});
+years.addEventListener("input", () => {
+  yearvalue = years.value;
+})
 taptopay.addEventListener("click", (e) => {
   e.preventDefault();
-  paymentcontainer.style.display = "none";
-  setInterval(function () {
-    paymentModal.style.display = "block";
-  }, 1000);
+  if(monthvalue && yearvalue){
+    paymentcontainer.style.display = "none";
+    setInterval(function () {
+      paymentModal.style.display = "block";
+    }, 1000);
+  }else{
+   expiry.style.display = "block";
+  }
+  
 });
 
 
