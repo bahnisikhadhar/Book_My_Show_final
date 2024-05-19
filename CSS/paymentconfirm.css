@@ -1,4 +1,4 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -29,7 +29,6 @@
     width: 40%;
     margin: 2em auto;
     background-color: white;
-    /* background-color: yellow; */
     display: flex;
     flex-direction: column;
     padding: 30px;
@@ -112,13 +111,10 @@
    font-weight: bold;
    border-radius: 8px;
    margin: 1em auto;
-   /* display: none; */
+  
 }
 
-/* .disabled:hover{
-  border :1px solid rgb(237, 228, 228) ;
-  box-shadow: 0 1px 0 2px rgb(94, 92, 92);
-} */
+
 
 
 .display_block{
@@ -150,10 +146,7 @@
     position :fixed;
     
     display: none;
-    /* top: 20%;
-    left: 32.5%; */
-    /* border-radius: 15px;
-    box-shadow: 0px 0px 0px 3px black; */
+   
    
 }
 
@@ -245,8 +238,6 @@
 @media only screen and (max-width: 600px)  {
     .payment_container {
       width: 100%;
-      /* height: auto;
-      padding: 20px; */
     }
     .payment_first-row {
       flex-direction: column;
@@ -275,4 +266,257 @@
       width: 100%;
       margin-left: 0;
     }
-  } 
+  }  */
+
+
+
+
+/* ------------------------------------------------------------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.payment_head {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  background-color: #1f253a;
+  padding: 1rem;
+}
+
+.payment_head img {
+  width: 150px;
+}
+
+.payment_container_outerbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.backgroundPageImage {
+  height: 100vh;
+  width: 100%;
+  background-image: url('../Images/Booking-ticket-on-BookMyShow.jpg');
+  background-position: center;
+  background-size: cover;
+  opacity: 0.9;
+}
+.payment_container_inner {
+  box-shadow: 0px 0px 5px rgb(174, 173, 173);
+  background-color: white;
+  width: 40%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.payment_container_inner h3{
+  margin-bottom: 10px;
+}
+.confirmyourpayment {
+  text-align: center;
+  padding: 1rem;
+  color: rgb(234, 48, 48);
+  margin-bottom: 10px;
+  border-bottom: 2px solid red;
+}
+
+.payment_first-row,
+.payment_selection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.payment_owner {
+  width: 70%;
+}
+.cvv{
+  width: 30%;
+}
+.payment_input-field input {
+  width: 100%;
+  border: 2px solid rgb(210, 193, 193);
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.payment_date {
+  width: 50%;
+}
+
+
+.payment_date select {
+  border: 1px solid rgb(210, 193, 193);
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.payment_cards {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payment_cards img {
+  width: 22%;
+}
+
+.taptoPay {
+  text-align: center;
+  color: #ffff;
+  background-color: rgb(232, 64, 64);
+  text-decoration: none;
+  padding: 8px;
+  font-size: 16px;
+  transition: 0.5s;
+  width: 50%;
+  font-weight: bold;
+  border-radius: 8px;
+  margin: 1rem auto;
+  display: none;
+}
+
+.disabled {
+  text-align: center;
+  color: rgb(123, 119, 119);
+  background-color: rgb(208, 203, 203);
+  text-decoration: none;
+  padding: 8px;
+  font-size: 16px;
+  transition: 0.5s;
+  width: 50%;
+  font-weight: bold;
+  border-radius: 8px;
+  margin: 1rem auto;
+
+}
+.display_block {
+  display: block;
+}
+
+.display_none {
+  display: none;
+}
+
+.taptoPay:hover {
+  border: 1px solid red;
+  box-shadow: 0 1px 0 2px rgb(245, 140, 140);
+  cursor: pointer;
+}
+.payment_modal{
+  display: none;
+  /* width:475px ; */
+height:250px ;
+width: 40%;
+padding: 1rem;
+background-color: #ffff;
+margin: 5% auto;
+opacity: 0.95;
+border-radius: 12px;
+position: absolute;
+top: 15%;
+}
+
+.happyMessage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
+
+.enjoy{
+font-size: 50px;
+text-align: center;
+color: rgb(87, 168, 137);
+font-weight: bold;
+}
+
+.enjoy1{
+font-size: 1.5rem;
+font-weight: 600;
+text-align: center;
+color:rgb(231, 99, 99) ;
+}
+
+
+
+.payment_modal p{
+font-size: 30px;
+text-align: center;
+font-weight: 600;
+color: rgb(128, 112, 112);
+margin-bottom: 2rem;
+}
+.backToHome_box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.backToHome {
+text-align: center;
+color: #ffff;
+background-color: rgb(232, 64, 64);
+ text-decoration: none;
+ padding: 10px;
+ font-size: 16px;
+ transition: 0.5s;
+ width:50%;
+ font-weight: bold;
+ border-radius: 8px;
+text-align: center;
+/* margin: 30%;
+margin-top: 1rem; */
+
+}
+
+.backToHome:hover{
+border :1px solid red ;
+box-shadow: 0 1px 0 2px rgb(245, 140, 140);
+cursor: pointer;
+
+}
+@media screen and (max-width:820px){
+  .backToHome{
+    width: 70%;
+  }
+}
+
+@media screen and (max-width:720px)  {
+  .payment_container_inner {
+    width: 90%;
+  }
+  .payment_container_inner h3{
+    font-size: .8rem;
+  }
+  .taptoPay,.disabled{
+    width: 80%;
+  }
+  .payment_modal{
+    width: 90%;
+    height: 200px;
+  }
+  .backToHome{
+    width: 80%;
+    font-size: .8rem;
+  }
+  .payment_modal p{
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .enjoy{
+    font-size: 30px;
+    }
+    .enjoy1{
+    font-size: 1.3rem;
+  
+    }
+}

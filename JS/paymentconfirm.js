@@ -1,10 +1,7 @@
 const taptopay = document.querySelector(".taptoPay");
 const disabled = document.querySelector(".disabled");
-const paymentcontainer = document.querySelector(".payment_container");
+const paymentcontainer = document.querySelector(".payment_container_inner");
 const paymentModal = document.querySelector(".payment_modal");
-const paymentbackground_image = document.querySelector(
-  ".paymentbackground_image"
-);
 
 const cardName = document.getElementById("card_name");
 const cardcvv = document.getElementById("card_cvv");
@@ -36,7 +33,6 @@ cardcvv.addEventListener('input', () => {
 taptopay.addEventListener("click", (e) => {
   e.preventDefault();
   paymentcontainer.style.display = "none";
-  paymentbackground_image.src = "../Images/Screenshot_20221223_135940.png";
   setInterval(function () {
     paymentModal.style.display = "block";
   }, 1000);
