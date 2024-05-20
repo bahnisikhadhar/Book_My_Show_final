@@ -34,11 +34,14 @@ cardcvv.addEventListener('input', () => {
 });
 let monthvalue = "";
 let yearvalue = "";
-months.addEventListener("input", () => {
+
+months.addEventListener("change", () => {
   monthvalue = months.value;
+  console.log(months.value)
 });
-years.addEventListener("input", () => {
+years.addEventListener("change", () => {
   yearvalue = years.value;
+  console.log(years.value)
 })
 taptopay.addEventListener("click", (e) => {
   e.preventDefault();
